@@ -1,0 +1,167 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 20px;
+}
+
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    font-size: 17px;
+    min-width: 800px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    white-space: normal; /* Allow text to wrap */
+    overflow: visible; /* Ensure content is not hidden */
+    text-overflow: clip; /* Remove ellipsis effect */
+    vertical-align: middle;
+}
+
+/* Specific styling for the top header row */
+#prmbench-table thead tr:first-child th {
+    background-color: #e6e6e6; /* Lighter grey for the top row headers */
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd; /* Add a subtle bottom border */
+}
+
+/* Specific styling for the second header row */
+#prmbench-table thead tr:last-child th {
+    background-color: #f2f2f2; /* Slightly darker grey for the second row headers */
+    font-weight: bold;
+    border-bottom: 2px solid #ddd; /* Stronger bottom border */
+}
+
+td {
+    background-color: transparent;
+    border-top: 1px solid #eee; /* Light border between rows */
+}
+
+td:hover {
+    background-color: #f5f5f5;
+}
+
+.clickable {
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.clickable:hover {
+    background-color: #e0e0e0;
+}
+
+.reset-cell {
+    background-color: #e6e6e6;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important; /* Use !important to ensure override */
+}
+
+.sortable:hover {
+    cursor: pointer;
+}
+
+.asc::after {
+    content: ' ▲';
+    font-size: 0.8em;
+    vertical-align: super;
+}
+
+.desc::after {
+    content: ' ▼';
+    font-size: 0.8em;
+    vertical-align: super;
+}
+
+/* Styling for model type labels */
+.model-labels-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.leaderboard-label {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 5px;
+    border-radius: 3px;
+    color: #333;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Specific colors for PRMBench classes (these are row background colors) */
+.prm {
+    background-color: rgba(174, 214, 241, 0.2); /* Slightly transparent light blue */
+}
+
+.lm_c {
+    background-color: rgba(255, 208, 80, 0.1); /* Slightly transparent light yellow */
+}
+
+.lm_o {
+    background-color: rgba(170, 230, 170, 0.2); /* Slightly transparent light green */
+}
+
+/* Styling for best and second best scores */
+.best-score-text {
+    font-weight: bold;
+}
+
+.second-best-score-text {
+    text-decoration: underline;
+}
+
+.red-bold-score { /* For the red bold numbers */
+    color: #e74c3c; /* Red color */
+}
+
+/* Style for external links in table */
+.ext-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ext-link:hover {
+    text-decoration: underline;
+}
+
+/* Ensure model names don't get too small if needed */
+td:first-child {
+    min-width: 150px; /* Adjust as needed */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    table {
+        min-width: unset;
+        width: 100%;
+    }
+    th, td {
+        padding: 6px;
+        font-size: 14px;
+    }
+    .leaderboard-label {
+        padding: 3px 8px;
+        margin: 3px;
+    }
+}

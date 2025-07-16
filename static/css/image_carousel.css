@@ -1,0 +1,165 @@
+/* Image Carousel Container */
+.image-carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 30px auto;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 10px; /* Padding inside the container */
+    box-sizing: border-box; /* Include padding in dimensions */
+}
+
+/* Image Display Area */
+.carousel-image-display {
+    position: relative;
+    width: 100%;
+    /* Maintain aspect ratio - for example, 3:2 */
+    padding-bottom: 66.66%; /* (Height / Width) * 100% = (2/3) * 100% */
+    overflow: hidden; /* Hide overflowing parts of images */
+    border-radius: 4px; /* Inner border-radius for image area */
+}
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure image fits within bounds without cropping, maintaining aspect ratio */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
+    cursor: pointer; /* Indicate clickable */
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+/* Carousel Arrows (reusing styles from previous task for consistency) */
+/* You might already have these in prmbench_leaderboard.css if you're keeping it global */
+/* If you want separate styles for image carousel arrows, you can define them here */
+.carousel-arrow {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #555;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    position: absolute; /* Position arrows absolutely over the container */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+}
+
+.carousel-arrow:hover {
+    background-color: #e0e0e0;
+    color: #333;
+    transform: translateY(-50%) scale(1.05); /* Add scale for hover effect */
+}
+
+.carousel-arrow.left-arrow {
+    left: -20px; /* Position outside a bit for better visibility */
+}
+
+.carousel-arrow.right-arrow {
+    right: -20px; /* Position outside a bit for better visibility */
+}
+
+/* Optional: Dots Navigation */
+.image-carousel-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-carousel-container {
+        max-width: 95%; /* Adjust for smaller screens */
+    }
+    .carousel-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        left: 5px; /* Position arrows inside on smaller screens */
+        right: 5px;
+    }
+    .carousel-arrow.left-arrow {
+        left: 5px;
+    }
+    .carousel-arrow.right-arrow {
+        right: 5px;
+    }
+}
+
+/* For a single image display (NEW STYLES) */
+.single-image-display-wrapper {
+    margin: 30px auto; /* Centers the wrapper horizontally and provides vertical spacing */
+    max-width: 800px; /* Maximum width for the image container, adjust as needed */
+    text-align: center; /* Centers inline content (like <img> if it behaves as inline) */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+.static-display-image {
+    max-width: 100%; /* Ensures the image scales down if it's larger than its container */
+    height: auto; /* Maintains the image's aspect ratio */
+    display: block; /* Makes the image a block element to properly use margin: auto for centering if needed */
+    margin: 0 auto; /* Centers the image itself within its block parent */
+    border-radius: 4px; /* Optional: adds a subtle border radius to the image */
+}
+
+.responsive-video-wrapper {
+    position: relative;
+    width: 100%;
+    /* Maintain 16:9 aspect ratio (height / width = 9/16 = 0.5625) */
+    padding-bottom: 56.25%; /* (9 / 16) * 100% */
+    height: 0;
+    overflow: hidden;
+    margin: 30px auto; /* Centers the wrapper horizontally and provides vertical spacing */
+    max-width: 800px; /* Max width for the video, adjust as needed */
+    /* Optional: add a border or shadow around the video player itself */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #000; /* Background for when video hasn't loaded or is black */
+}
+
+.responsive-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none; /* Removes the iframe's default border */
+    border-radius: 8px; /* Apply border-radius to the iframe */
+}

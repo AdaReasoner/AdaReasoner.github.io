@@ -47,6 +47,10 @@
 
   <script src="./static/js/leaderboard_testmini.js"></script>
   <script src="./visualizer/data/data_public.js" defer></script>
+  <link rel="stylesheet" href="./static/css/prmbench_leaderboard.css">
+  <script src="./static/js/prmbench_leaderboard.js"></script>
+  <link rel="stylesheet" href="./static/css/image_carousel.css">
+  <script src="./static/js/image_carousel.js"></script>
 </head>
 <body>
 
@@ -73,6 +77,12 @@
         <div class="navbar-dropdown">
           <a class="navbar-item" href="https://github.com/ssmisya/MHR">
             MHR
+          </a>
+          <a class="navbar-item" href="https://vlmlt.github.io/">
+            VLM-LT
+          </a>
+          <a class="navbar-item" href="https://github.com/OpenThinkIMG/OpenThinkIMG">
+            OpenThinkImG
           </a>
         </div>
       </div>
@@ -165,6 +175,16 @@
                 <span>Documentation</span>
               </a>
             </span>
+              <span class="link-block">
+              <a href="https://www.bilibili.com/video/BV1kgu8z8E6D/?vd_source=dcfbf753dddd7667382364a1a5c63128"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-youtube"></i>
+                </span>
+                <span>Bilibili</span>
+              </a>
+            </span>
+
             </div>
 
           </div>
@@ -190,6 +210,195 @@
           <span style="background-color: rgb(126, 176, 149); padding: 0.1em;">green</span> circles indicate correct regular steps.
 
       </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="video-section"> <!-- CHANGED: Renamed ID for clarity -->
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Tutorial Video</h2>
+
+    <!-- NEW: Responsive video wrapper -->
+    <div class="responsive-video-wrapper">
+      <iframe src="https://www.youtube.com/embed/h53kWZCOfSs?si=dx47zyostJwt8FhT"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-full has-text-centered content">
+            <h2 class="title is-3" id="leaderboard_test">Leaderboard on PRMBench</h2>
+            <div class="leaderboard-description">
+              PRM scores on PRMBench. Click on Simplicity, Soundness, or Sensitivity to expand detailed results for each category.
+            </div>
+            <br>
+            <div class="model-labels-container">
+              <span class="leaderboard-label prm">PRMs</span>
+              <span class="leaderboard-label lm_c">Proprietary LLMs</span>
+              <span class="leaderboard-label lm_o">Open LLMs</span>
+            </div>
+            <br>
+
+            <div class="leaderboard-container">
+              <div class="table-wrapper">
+                <table id="prmbench-table">
+                  <thead>
+                  <tr>
+                    <!-- Reset spans Model column -->
+                    <th colspan="1" class="reset-cell clickable" style="text-align: center;">Reset</th>
+                    <!-- Overall (top) spans Ov... and Cl... -->
+                    <th colspan="1">Overall</th>
+                    <!-- S1, S2, S3 (top) are clickable, initially span 1 column -->
+                    <th class="prm-s1-top-cell clickable" colspan="1">Simplicity</th>
+                    <th class="prm-s2-top-cell clickable" colspan="1">Soundness</th>
+                    <th class="prm-s3-top-cell clickable" colspan="1">Sensitivity</th>
+                  </tr>
+                  <tr>
+                    <!-- Model column -->
+                    <th class="sortable clickable" data-sort="string" data-key="Model">Model</th>
+                    <!-- Overall score column -->
+                    <th class="sortable clickable" data-sort="number" data-key="Overall">Overall</th>
+                    <!-- Class column (initially visible, but concise) -->
+                    <!--                    <th class="sortable clickable" data-sort="string" data-key="Class">Class</th>-->
+
+                    <!-- S1 Group -->
+                    <!-- S1 Overall column (initially visible) -->
+                    <th class="sortable clickable prm-s1-overall-col" data-sort="number" data-key="S1">Overall</th>
+                    <!-- S1 Detail columns (initially hidden) -->
+                    <th class="hidden prm-s1-details sortable clickable" data-sort="number" data-key="S1">Overall</th>
+                    <th class="hidden prm-s1-details sortable clickable" data-sort="number" data-key="NR">NR.</th>
+                    <th class="hidden prm-s1-details sortable clickable" data-sort="number" data-key="NCL">NCL.</th>
+
+                    <!-- S2 Group -->
+                    <!-- S2 Overall column (initially visible) -->
+                    <th class="sortable clickable prm-s2-overall-col" data-sort="number" data-key="S2">Overall</th>
+                    <!-- S2 Detail columns (initially hidden) -->
+                    <th class="hidden prm-s2-details sortable clickable" data-sort="number" data-key="S2">Overall.</th>
+                    <th class="hidden prm-s2-details sortable clickable" data-sort="number" data-key="ES">ES.</th>
+                    <th class="hidden prm-s2-details sortable clickable" data-sort="number" data-key="SC">SC.</th>
+                    <th class="hidden prm-s2-details sortable clickable" data-sort="number" data-key="DC">DC.</th>
+                    <th class="hidden prm-s2-details sortable clickable" data-sort="number" data-key="CI">CI.</th>
+
+                    <!-- S3 Group -->
+                    <!-- S3 Overall column (initially visible) -->
+                    <th class="sortable clickable prm-s3-overall-col" data-sort="number" data-key="S3">Overall</th>
+                    <!-- S3 Detail columns (initially hidden) -->
+                    <th class="hidden prm-s3-details sortable clickable" data-sort="number" data-key="S3">Overall.</th>
+                    <th class="hidden prm-s3-details sortable clickable" data-sort="number" data-key="PS">PS.</th>
+                    <th class="hidden prm-s3-details sortable clickable" data-sort="number" data-key="DR">DR.</th>
+                    <th class="hidden prm-s3-details sortable clickable" data-sort="number" data-key="MS">MS.</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <!-- Table data will be inserted here by JavaScript -->
+                  </tbody>
+                </table>
+                <p class="test-desc">Overall results of different models on the PRMBench leaderboard.
+                  The best-performing model in each category is <span style="color: red">in-red</span>, and the second best is <u>underlined</u>.</p>
+               <br>
+                <b>Task types:</b> <b>NR:</b> Non-Redundancy,
+                <b>NCL:</b> Non-Circular Logic,
+                <b>ES:</b> Empirically Soundness,
+                <b>SC:</b> Step Consistency,
+                <b>DC:</b> Domain Consistency.
+                <b>CI:</b> Confidence Invariance.
+                <b>PS:</b> Prerequisite Sensitivity.
+                <b>DR:</b> Deception Resistance.
+                <b>MS:</b> Multi-Solution Consistency.
+                <br>
+<!--                <b>Evaluation Subjects:</b>-->
+<!--                <b>S1:</b> Average PRMScore for Simplicity evaluation subjects, including NR. and NCL.<br>-->
+<!--                <b>S2:</b> Average PRMScore for Soundness evaluation subjects, including ES., SC., DC., and CI.<br>-->
+<!--                <b>S3:</b> Average PRMScore for Sensitivity evaluation subjects, including PS., DR., and MS. <br>-->
+<!--                <br>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<section class="section" id="image-carousel-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Leaderboard on PRMBench-STEM</h2>
+    <div class="leaderboard-description">
+      We extend our benchmark by collecting additional data from various scientific domains, including physics, chemistry, and biology, and construct PRMBENCH-STEM using a similar data curation methodology.
+    </div>
+    <div class="image-carousel-container">
+      <!-- Left Arrow -->
+      <a class="carousel-arrow left-arrow" id="image-carousel-prev"><i class="fas fa-chevron-left"></i></a>
+
+      <!-- Carousel Image Display Area -->
+      <div class="carousel-image-display" id="carousel-image-display">
+        <!-- Images will be dynamically loaded here by JavaScript -->
+        <!-- Example: <img src="./static/images/image1.jpg" alt="Description 1" class="carousel-image active"> -->
+      </div>
+
+      <!-- Right Arrow -->
+      <a class="carousel-arrow right-arrow" id="image-carousel-next"><i class="fas fa-chevron-right"></i></a>
+    </div>
+
+    <!-- Optional: Image Counter/Dots (can be added later if needed) -->
+    <div class="image-carousel-dots" id="image-carousel-dots">
+      <!-- Dots will be dynamically generated here -->
+    </div>
+  </div>
+</section>
+
+    <section class="section" id="takeaways-section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Analysis and Takeaways</h2> <!-- CHANGED: Updated title to be more descriptive for a static image -->
+        <div class="leaderboard-description">
+          We conducted an in-depth analysis of PRMBench, and here we present what we consider to be the most important findings and takeaways.
+        </div>
+        <!-- NEW: Container specifically for a single static image -->
+        <div class="single-image-display-wrapper">
+          <img src="./static/images/takeaways.jpg" alt="PRMBench-STEM Overview" class="static-display-image">
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="detail_classification-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Detailed Classifications</h2> <!-- CHANGED: Updated title to be more descriptive for a static image -->
+    <div class="leaderboard-description">
+
+      The detailed classification of PRMBench.
+      Here we display the hierarchical categories, corresponding descriptions, and illustrations of PRMBench classification design.
+    </div>
+    <!-- NEW: Container specifically for a single static image -->
+    <div class="single-image-display-wrapper">
+      <img src="./static/images/detail_classification.jpg" alt="PRMBench-STEM Overview" class="static-display-image">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="example-case">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Examples</h2> <!-- CHANGED: Updated title to be more descriptive for a static image -->
+    <div class="leaderboard-description">
+
+      An example of a data instance and error cases from PRMBENCH. The numbers reported are step-level
+      validity scores generated by models. Scores and labels in <span style="color: red">red</span> indicate negative samples, while those in green
+      indicate positive samples. “GT” represents ground truth, while “ReasonE,” “MathS,” and “Gemini” correspond to
+      ReasonEval-7B, Math-Shepherd-7B, and Gemini-2.0-flash-thinkin
+    </div>
+    <!-- NEW: Container specifically for a single static image -->
+    <div class="single-image-display-wrapper">
+      <img src="./static/images/example.jpg" alt="PRMBench-STEM Overview" class="static-display-image">
     </div>
   </div>
 </section>
@@ -223,569 +432,8 @@
       </div>
     </div>
     <!--/ Abstract. -->
-
-
-
-    <section class="section">
-      <div class="container">
-
-        <div class="columns is-centered">
-          <div class="column is-full has-text-centered content">
-    <h2 class="title is-3" id="leaderboard_test">Leaderboard on PRMBench</h2>
-    <div class="content">
-
-
-
-
-      <table class="js-sort-table" id="results">
-        <tr>
-          <td class="js-sort-number"><strong>#</strong></td>
-          <td class="js-sort-number"><strong>Model</strong></td>
-          <td class="js-sort-number"><strong>Class</strong></td>
-          <td class="js-sort-number"><strong>Source</strong></td>
-          <td class="js-sort-number"><strong>Overall</strong></td>
-          <td class="js-sort-number"><strong>NR.</strong></td>
-          <td class="js-sort-number"><strong>NCL.</strong></td>
-          <td class="js-sort-number"><strong>S1</strong></td>
-          <td class="js-sort-number"><strong>ES.</strong></td>
-          <td class="js-sort-number"><strong>SC.</strong></td>
-          <td class="js-sort-number"><strong>DC.</strong></td>
-          <td class="js-sort-number"><strong>CI.</strong></td>
-          <td class="js-sort-number"><strong>S2</strong></td>
-          <td class="js-sort-number"><strong>PS.</strong></td>
-          <td class="js-sort-number"><strong>DR.</strong></td>
-          <td class="js-sort-number"><strong>MS.</strong></td>
-          <td class="js-sort-number"><strong>S3</strong></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><b class="best-score-text">Gemini-2.0-thinking-exp-1219 🥇</b></td>
-          <td>LM-C</td>
-          <td><a href="https://ai.google.dev/gemini-api/docs/thinking-mode" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="best-score-text">68.8</b></td>
-          <td>68.5</td>
-          <td>63.8</td>
-          <td><b class="">66.2</b></td>
-          <td>72.9</td>
-          <td>71.3</td>
-          <td>71.0</td>
-          <td>71.8</td>
-          <td><b class="">71.8</b></td>
-          <td>60.3</td>
-          <td>65.7</td>
-          <td>99.8</td>
-          <td><b class="">75.3</b></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td><b class="best-score-text">o1-mini 🥈</b></td>
-          <td>LM-C</td>
-          <td><a href="https://openai.com/index/openai-o1-mini-advancing-cost-efficient-reasoning/" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="best-score-text">68.8</b></td>
-          <td>65.6</td>
-          <td>63.7</td>
-          <td><b class="">64.6</b></td>
-          <td>74.5</td>
-          <td>67.7</td>
-          <td>73.8</td>
-          <td>72.3</td>
-          <td><b class="">72.1</b></td>
-          <td>61.8</td>
-          <td>64.8</td>
-          <td>100.0</td>
-          <td><b class="">75.5</b></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td><b class="best-score-text">Qwen2.5-Math-PRM-72B 🥉</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="best-score-text">68.2</b></td>
-          <td>50.4</td>
-          <td>58.8</td>
-          <td><b class="">54.6</b></td>
-          <td>73.7</td>
-          <td>71.1</td>
-          <td>72.2</td>
-          <td>78.6</td>
-          <td><b class="">73.9</b></td>
-          <td>60.3</td>
-          <td>71.2</td>
-          <td>99.4</td>
-          <td><b class="">77.0</b></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td><b class="">GPT-4o</b></td>
-          <td>LM-C</td>
-          <td><a href="https://openai.com/index/hello-gpt-4o/" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">66.8</b></td>
-          <td>57.0</td>
-          <td>62.4</td>
-          <td><b class="">59.7</b></td>
-          <td>72.0</td>
-          <td>69.7</td>
-          <td>70.7</td>
-          <td>71.1</td>
-          <td><b class="">70.9</b></td>
-          <td>62.5</td>
-          <td>65.7</td>
-          <td>99.2</td>
-          <td><b class="">75.8</b></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td><b class="">Gemini-2.0-flash-exp</b></td>
-          <td>LM-C</td>
-          <td><a href="https://deepmind.google/technologies/gemini/flash/" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">66.0</b></td>
-          <td>67.2</td>
-          <td>58.1</td>
-          <td><b class="">62.7</b></td>
-          <td>70.4</td>
-          <td>65.7</td>
-          <td>66.0</td>
-          <td>67.3</td>
-          <td><b class="">67.3</b></td>
-          <td>61.8</td>
-          <td>66.2</td>
-          <td>98.2</td>
-          <td><b class="">75.4</b></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td><b class="">Qwen2.5-Math-PRM-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">65.5</b></td>
-          <td>49.0</td>
-          <td>55.1</td>
-          <td><b class="">52.1</b></td>
-          <td>71.8</td>
-          <td>67.3</td>
-          <td>66.3</td>
-          <td>78.5</td>
-          <td><b class="">71.0</b></td>
-          <td>57.6</td>
-          <td>69.1</td>
-          <td>99.7</td>
-          <td><b class="">75.5</b></td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td><b class="">Pure-PRM-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/jinachris/Qwen2.5-Math-7B-PRM800K" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">65.3</b></td>
-          <td>49.2</td>
-          <td>55.2</td>
-          <td><b class="">52.2</b></td>
-          <td>71.1</td>
-          <td>68.8</td>
-          <td>64.0</td>
-          <td>76.9</td>
-          <td><b class="">70.2</b></td>
-          <td>60.3</td>
-          <td>69.2</td>
-          <td>98.0</td>
-          <td><b class="">75.8</b></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td><b class="">Skywork-PRM-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-7B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">65.1</b></td>
-          <td>56.4</td>
-          <td>62.8</td>
-          <td><b class="">59.6</b></td>
-          <td>69.4</td>
-          <td>67.1</td>
-          <td>67.7</td>
-          <td>69.9</td>
-          <td><b class="">68.5</b></td>
-          <td>60.9</td>
-          <td>65.8</td>
-          <td>93.2</td>
-          <td><b class="">73.3</b></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td><b class="">QwQ-Preview-32B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/Qwen/QwQ-32B-Preview" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">63.6</b></td>
-          <td>57.2</td>
-          <td>55.6</td>
-          <td><b class="">56.4</b></td>
-          <td>67.4</td>
-          <td>72.3</td>
-          <td>66.2</td>
-          <td>66.9</td>
-          <td><b class="">68.2</b></td>
-          <td>57.8</td>
-          <td>62.7</td>
-          <td>100.0</td>
-          <td><b class="">73.5</b></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td><b class="">Skywork-PRM-1.5B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-1.5B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">61.1</b></td>
-          <td>52.0</td>
-          <td>56.4</td>
-          <td><b class="">54.2</b></td>
-          <td>64.8</td>
-          <td>64.9</td>
-          <td>63.3</td>
-          <td>66.5</td>
-          <td><b class="">64.9</b></td>
-          <td>57.5</td>
-          <td>63.3</td>
-          <td>91.1</td>
-          <td><b class="">70.7</b></td>
-        </tr>
-        <tr>
-          <td>11</td>
-          <td><b class="">ReasonEval-34B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/GAIR/ReasonEval-34B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">60.5</b></td>
-          <td>54.8</td>
-          <td>48.1</td>
-          <td><b class="">51.5</b></td>
-          <td>66.4</td>
-          <td>60.3</td>
-          <td>57.8</td>
-          <td>67.5</td>
-          <td><b class="">63.0</b></td>
-          <td>57.7</td>
-          <td>64.3</td>
-          <td>97.2</td>
-          <td><b class="">73.1</b></td>
-        </tr>
-        <tr>
-          <td>12</td>
-          <td><b class="">R1-Distill-Qwen-32B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">60.2</b></td>
-          <td>57.2</td>
-          <td>51.9</td>
-          <td><b class="">54.5</b></td>
-          <td>66.1</td>
-          <td>68.4</td>
-          <td>69.3</td>
-          <td>64.8</td>
-          <td><b class="">67.2</b></td>
-          <td>53.3</td>
-          <td>54.6</td>
-          <td>99.9</td>
-          <td><b class="">69.3</b></td>
-        </tr>
-        <tr>
-          <td>13</td>
-          <td><b class="">ReasonEval-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/GAIR/ReasonEval-7B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">60.1</b></td>
-          <td>61.0</td>
-          <td>50.1</td>
-          <td><b class="">55.6</b></td>
-          <td>62.1</td>
-          <td>65.9</td>
-          <td>61.5</td>
-          <td>66.0</td>
-          <td><b class="">63.9</b></td>
-          <td>55.7</td>
-          <td>58.0</td>
-          <td>99.5</td>
-          <td><b class="">71.1</b></td>
-        </tr>
-        <tr>
-          <td>14</td>
-          <td><b class="">R1-Distill-Llama3.1-70B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">57.5</b></td>
-          <td>49.5</td>
-          <td>48.1</td>
-          <td><b class="">48.8</b></td>
-          <td>61.4</td>
-          <td>65.5</td>
-          <td>65.8</td>
-          <td>61.1</td>
-          <td><b class="">63.4</b></td>
-          <td>48.8</td>
-          <td>54.1</td>
-          <td>100.0</td>
-          <td><b class="">67.6</b></td>
-        </tr>
-        <tr>
-          <td>15</td>
-          <td><b class="">Qwen2.5-Math-72B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/Qwen/Qwen2.5-Math-72B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">57.4</b></td>
-          <td>55.3</td>
-          <td>54.9</td>
-          <td><b class="">55.1</b></td>
-          <td>55.5</td>
-          <td>71.6</td>
-          <td>58.1</td>
-          <td>59.1</td>
-          <td><b class="">61.1</b></td>
-          <td>47.4</td>
-          <td>53.8</td>
-          <td>100.0</td>
-          <td><b class="">67.1</b></td>
-        </tr>
-        <tr>
-          <td>16</td>
-          <td><b class="">RLHFlow-PRM-Mistral-8B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/RLHFlow/Llama3.1-8B-PRM-Mistral-Data" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">54.4</b></td>
-          <td>46.1</td>
-          <td>47.3</td>
-          <td><b class="">46.7</b></td>
-          <td>56.6</td>
-          <td>55.1</td>
-          <td>54.4</td>
-          <td>63.8</td>
-          <td><b class="">57.5</b></td>
-          <td>51.5</td>
-          <td>56.2</td>
-          <td>97.9</td>
-          <td><b class="">68.5</b></td>
-        </tr>
-        <tr>
-          <td>17</td>
-          <td><b class="">RLHFlow-PRM-Deepseek-8B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/RLHFlow/Llama3.1-8B-PRM-Deepseek-Data" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">54.2</b></td>
-          <td>46.4</td>
-          <td>48.9</td>
-          <td><b class="">47.6</b></td>
-          <td>55.7</td>
-          <td>55.0</td>
-          <td>53.2</td>
-          <td>66.2</td>
-          <td><b class="">57.5</b></td>
-          <td>49.0</td>
-          <td>55.4</td>
-          <td>99.8</td>
-          <td><b class="">68.1</b></td>
-        </tr>
-        <tr>
-          <td>18</td>
-          <td><b class="">MATHMinos-Mistral-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://github.com/KbsdJames/MATH-Minos" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">54.2</b></td>
-          <td>48.8</td>
-          <td>54.0</td>
-          <td><b class="">51.4</b></td>
-          <td>57.0</td>
-          <td>52.1</td>
-          <td>50.7</td>
-          <td>57.8</td>
-          <td><b class="">54.4</b></td>
-          <td>52.8</td>
-          <td>55.8</td>
-          <td>91.1</td>
-          <td><b class="">66.5</b></td>
-        </tr>
-        <tr>
-          <td>19</td>
-          <td><b class="">R1-Distill-Llama3.1-8B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">52.7</b></td>
-          <td>49.9</td>
-          <td>46.6</td>
-          <td><b class="">48.2</b></td>
-          <td>52.9</td>
-          <td>63.2</td>
-          <td>54.5</td>
-          <td>54.9</td>
-          <td><b class="">56.4</b></td>
-          <td>46.7</td>
-          <td>48.5</td>
-          <td>100.0</td>
-          <td><b class="">65.0</b></td>
-        </tr>
-        <tr>
-          <td>20</td>
-          <td><b class="">R1-Distill-Qwen-7B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">52.6</b></td>
-          <td>32.9</td>
-          <td>37.9</td>
-          <td><b class="">35.4</b></td>
-          <td>47.3</td>
-          <td>54.1</td>
-          <td>48.4</td>
-          <td>48.0</td>
-          <td><b class="">49.4</b></td>
-          <td>45.6</td>
-          <td>46.8</td>
-          <td>100.0</td>
-          <td><b class="">64.1</b></td>
-        </tr>
-        <tr>
-          <td>21</td>
-          <td><b class="">Llemma-PRM800k-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/ScalableMath/llemma-7b-prm-prm800k-level-1to3-hf" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">52.0</b></td>
-          <td>49.3</td>
-          <td>53.4</td>
-          <td><b class="">51.4</b></td>
-          <td>56.4</td>
-          <td>47.1</td>
-          <td>46.7</td>
-          <td>53.3</td>
-          <td><b class="">50.9</b></td>
-          <td>51.0</td>
-          <td>53.5</td>
-          <td>93.6</td>
-          <td><b class="">66.0</b></td>
-        </tr>
-        <tr>
-          <td>22</td>
-          <td><b class="">Llemma-MetaMath-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/ScalableMath/llemma-7b-prm-metamath-level-1to3-hf" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">50.5</b></td>
-          <td>50.2</td>
-          <td>50.5</td>
-          <td><b class="">50.3</b></td>
-          <td>51.9</td>
-          <td>47.6</td>
-          <td>44.4</td>
-          <td>52.1</td>
-          <td><b class="">49.0</b></td>
-          <td>50.5</td>
-          <td>51.3</td>
-          <td>96.0</td>
-          <td><b class="">66.0</b></td>
-        </tr>
-        <tr>
-          <td>23</td>
-          <td><b class="">Llemma-oprm-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/ScalableMath/llemma-7b-oprm-prm800k-level-1to3-hf" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">50.3</b></td>
-          <td>48.7</td>
-          <td>49.3</td>
-          <td><b class="">49.0</b></td>
-          <td>54.2</td>
-          <td>46.8</td>
-          <td>44.5</td>
-          <td>53.5</td>
-          <td><b class="">49.8</b></td>
-          <td>49.2</td>
-          <td>51.3</td>
-          <td>91.8</td>
-          <td><b class="">64.1</b></td>
-        </tr>
-        <tr>
-          <td>24</td>
-          <td><b class="">MetaMath-7B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/meta-math/MetaMath-7B-V1.0" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">49.7</b></td>
-          <td>48.9</td>
-          <td>46.9</td>
-          <td><b class="">47.9</b></td>
-          <td>47.3</td>
-          <td>48.9</td>
-          <td>48.4</td>
-          <td>48.8</td>
-          <td><b class="">48.3</b></td>
-          <td>46.5</td>
-          <td>48.3</td>
-          <td>98.0</td>
-          <td><b class="">64.2</b></td>
-        </tr>
-        <tr>
-          <td>25</td>
-          <td><b class="">MetaMath-13B</b></td>
-          <td>LM-O</td>
-          <td><a href="https://huggingface.co/meta-math/MetaMath-13B-V1.0" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">49.4</b></td>
-          <td>50.3</td>
-          <td>44.4</td>
-          <td><b class="">47.3</b></td>
-          <td>47.8</td>
-          <td>47.4</td>
-          <td>49.4</td>
-          <td>48.1</td>
-          <td><b class="">48.2</b></td>
-          <td>49.0</td>
-          <td>48.1</td>
-          <td>99.5</td>
-          <td><b class="">65.5</b></td>
-        </tr>
-        <tr>
-          <td>26</td>
-          <td><b class="">MathShepherd-Mistral-7B</b></td>
-          <td>PRM</td>
-          <td><a href="https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-prm" class="ext-link" target="_blank">Link</a></td>
-          <td><b class="">47.0</b></td>
-          <td>44.0</td>
-          <td>50.3</td>
-          <td><b class="">47.1</b></td>
-          <td>49.4</td>
-          <td>44.5</td>
-          <td>41.3</td>
-          <td>47.7</td>
-          <td><b class="">45.7</b></td>
-          <td>47.2</td>
-          <td>48.6</td>
-          <td>86.1</td>
-          <td><b class="">60.7</b></td>
-        </tr>
-      </table>
-
-
-
-
-
-
-
-
-
-      <b>Model Classes:</b> <b>PRM:</b> Process-Level Reward Models, <b>LM-C:</b> Close-Source Large Language Models, <b>LM-O:</b> Open-Source Large Language Models.
-      <br>
-      <b>Task types:</b> <b>NR:</b> Non-Redundancy,
-      <b>NCL:</b> Non-Circular Logic,
-      <b>ES:</b> Empirically Soundness,
-      <b>SC:</b> Step Consistency,
-      <b>DC:</b> Domain Consistency.
-      <b>CI:</b> Confidence Invariance.
-      <b>PS:</b> Prerequisite Sensitivity.
-      <b>DR:</b> Deception Resistance.
-      <b>MS:</b> Multi-Solution Consistency.
-      <br>
-      <b>Evaluation Subjects:</b>
-      <b>S1:</b> Average PRMScore for Simplicity evaluation subjects, including NR. and NCL.<br>
-      <b>S2:</b> Average PRMScore for Soundness evaluation subjects, including ES., SC., DC., and CI.<br>
-      <b>S3:</b> Average PRMScore for Sensitivity evaluation subjects, including PS., DR., and MS. <br>
-      <br>
-    </div>
-
-  </div>
-  </div>
-
   </div>
 </section>
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
