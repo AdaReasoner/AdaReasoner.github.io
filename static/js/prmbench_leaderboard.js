@@ -360,11 +360,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function applyStyle(value, rank) {
         if (value === undefined || value === null || value === '-') return '-';
 
-        if (rank === 0) {
+        if (rank === 1) {
             // Best score: bold and red
             return `<b class="best-score-text red-bold-score">${value}</b>`;
         }
-        if (rank === 1) {
+        if (rank === 2) {
             // Second best score: underline
             return `<u class="second-best-score-text">${value}</u>`;
         }
