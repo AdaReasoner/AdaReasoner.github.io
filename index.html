@@ -91,7 +91,7 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="#">Mingyang Song</a><sup>*,1</sup>,</span>
+              <a href="https://github.com/ssmisya">Mingyang Song</a><sup>*,1</sup>,</span>
             <span class="author-block">
               <a href="#">Haoyu Sun</a><sup>*,2</sup>,</span>
             <span class="author-block">
@@ -99,9 +99,11 @@
             <span class="author-block">
               <a href="#">Linjie Li</a><sup>*,4</sup>,</span>
             <span class="author-block">
+              <a href="#">Luxin Xu</a><sup>5</sup>,</span>
+            <span class="author-block">
               <a href="#">Ranjay Krishna</a><sup>4</sup>,</span>
             <span class="author-block">
-              <a href="#">Yu Cheng</a><sup>5</sup></span>
+              <a href="#">Yu Cheng</a><sup>6</sup></span>
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -109,7 +111,8 @@
             <span class="author-block"><sup>2</sup>Tongji University,</span>
             <span class="author-block"><sup>3</sup>National University of Singapore,</span>
             <span class="author-block"><sup>4</sup>University of Washington,</span>
-            <span class="author-block"><sup>5</sup>The Chinese University of Hong Kong</span>
+            <span class="author-block"><sup>5</sup>University of Electronic Science and Technology of China,</span>
+            <span class="author-block"><sup>6</sup>The Chinese University of Hong Kong</span>
           </div>
 
           <div class="column has-text-centered">
@@ -174,14 +177,11 @@
     <div class="hero-body">
 
       <figure class="image is-fullwidth">
-        <img src="./static/images/examples.png" alt="AdaReasoner Overview">
+        <img src="./static/images/teaser.jpg" alt="AdaReasoner Overview">
 
       </figure>
       <h2 class="subtitle has-text-centered">
         <strong>AdaReasoner</strong> performs adaptive and generalized tool-using.
-        The model learns to <span style="background-color: #c9e5dd; padding: 0.1em;">adopt beneficial tools</span>,
-        <span style="background-color: #fff3d5; padding: 0.1em;">discard irrelevant ones</span>, and
-        <span style="background-color: #d3d1d1; padding: 0.1em;">modulate tool usage frequency</span> based on task demands.
       </h2>
     </div>
   </div>
@@ -193,7 +193,11 @@
     <h2 class="title is-3 has-text-centered">Video Demo</h2>
     <div class="responsive-video-wrapper">
       <!-- 【替换点4】视频链接 -->
-      <iframe width="1000" height="600" src="https://www.youtube.com/embed/h53kWZCOfSs?si=5mkDu8yXGQRDfGil" title="YouTube video player"
+<!--      <iframe width="1000" height="600" src="https://www.youtube.com/embed/h53kWZCOfSs?si=5mkDu8yXGQRDfGil" title="YouTube video player"-->
+<!--              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+<!--              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen-->
+<!--              class="image is-fullwidth"></iframe>-->
+      <iframe width="1000" height="600" src="https://www.youtube.com/embed/AtBoJYW_yDA?si=t1bpiFQOatpiw3f4" title="YouTube video player"
               frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               class="image is-fullwidth"></iframe>
@@ -209,17 +213,27 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            While augmenting Multimodal Large Language Models (MLLMs) with tools is a promising direction,
-            existing approaches face critical limitations. They often rely on single, atomic tools, lack
-            support for multi-turn planning, and fail to equip models with the ability to select and
-            coordinate effective tool combinations for complex tasks.
-            To overcome these challenges, we introduce <span class="dnerf">AdaReasoner</span>, a new family
-            of models designed for dynamic tool orchestration in iterative visual reasoning. Our paradigm
-            integrates three key components: a scalable data curation methodology, a tailored Tool-GRPO
-            optimization algorithm, and an adaptive learning mechanism.
-            As a result, AdaReasoner achieves state-of-the-art performance, delivering substantial improvements
-            over its base models (e.g., <strong>+24.9%</strong> on average for the 7B variant) and even
-            surpassing strong proprietary models such as GPT-5 on challenging benchmarks like VSP and Jigsaw.
+            Many visual reasoning problems require acting through tools, measuring, trans-
+            forming, or simulating intermediate states rather than solving everything in a sin-
+            gle forward pass. Effective reasoning, therefore, hinges on knowing which tools
+            to use, when to invoke them, and how to compose them over multiple steps, even
+            when faced with new tools or new tasks. We introduce  <strong>AdaReasoner</strong>, a fam-
+            ily of multimodal models that learn tool use as a general reasoning skill rather
+            than as tool-specific or explicitly supervised behavior. AdaReasoner is enabled by
+            (i) a scalable data curation pipeline exposing models to long-horizon, multi-step
+            tool interactions; (ii) Tool-GRPO, a reinforcement learning algorithm that opti-
+            mizes tool selection and sequencing based on end-task success; and (iii) an adap-
+            tive learning mechanism that dynamically regulates tool usage. Together, these
+            components allow models to infer tool utility from task context and intermediate
+            outcomes, enabling coordination of multiple tools and generalization to unseen
+            tools. Empirically, AdaReasoner exhibits strong tool-adaptive and generalization
+            behaviors: it autonomously adopts beneficial tools, suppresses irrelevant ones, and
+            adjusts tool usage frequency based on task demands, despite never being explic-
+            itly trained to do so. These capabilities translate into state-of-the-art performance
+            across challenging benchmarks, improving the 7B base model by <strong>+24.9%</strong> on av-
+            erage and surpassing strong proprietary systems such as GPT-5 on multiple tasks,
+            including VSP and Jigsaw.
+
           </p>
         </div>
       </div>
@@ -227,29 +241,23 @@
   </div>
 </section>
 
-<!-- Key Features -->
+
+
+<!-- 【替换点6】Method Overview -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Key Features</h2>
-    <div class="columns is-multiline">
-      <div class="column is-4">
-        <div class="box">
-          <h3 class="title is-5">🎯 Adaptive Tool Selection</h3>
-          <p>Learns to autonomously adopt beneficial tools, discard irrelevant ones, and modulate usage frequency.</p>
-        </div>
-      </div>
-      <div class="column is-4">
-        <div class="box">
-          <h3 class="title is-5">🔄 Multi-Turn Planning</h3>
-          <p>Supports complex multi-turn tool interactions with reflection and backtracking capabilities.</p>
-        </div>
-      </div>
-      <div class="column is-4">
-        <div class="box">
-          <h3 class="title is-5">🌐 Strong Generalization</h3>
-          <p>Generalizes to unseen tools and novel tasks beyond training distribution.</p>
-        </div>
-      </div>
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <div class="image is-fullwidth">
+      <img src="./static/images/main_fig_new.jpg" alt="Method Overview" class="static-display-image">
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        An overview of our AdaReasoner framework. The pipeline consists of two main stages: (a) the Tool
+        Cold Start (TC) phase, where trajectories are carefully constructed to support multi-turn reasoning; and (b) the
+        Tool GRPO (TG) phase, where the policy is further refined via reinforcement learning guided by our adaptive,
+        multi-turn reward. In addition, the Adaptive Learning method (c) can be applied throughout both the TC and
+        TG stages, enabling improved generalization across tasks and tool configurations.
+      </p>
     </div>
   </div>
 </section>
@@ -265,23 +273,6 @@
       AdaReasoner achieves substantial gains across diverse benchmarks, outperforming both base models
       and strong proprietary systems like GPT-5 and Claude Sonnet 4.
     </p>
-  </div>
-</section>
-
-<!-- 【替换点6】Method Overview -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Method Overview</h2>
-    <div class="image is-fullwidth">
-      <img src="./static/images/main_fig.svg" alt="Method Overview" class="static-display-image">
-    </div>
-    <div class="content has-text-justified">
-      <p>
-        Our framework consists of three main stages: (a) Tool Cold Start (TC) with high-quality trajectory
-        data curation, (b) Adaptive Learning for improved generalization, and (c) Multi-Turn Tool GRPO (TG)
-        for reinforcement learning with tool interaction.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -352,6 +343,35 @@
     </div>
   </div>
 </section>
+
+
+<!-- Key Features -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Features</h2>
+    <div class="columns is-multiline">
+      <div class="column is-4">
+        <div class="box">
+          <h3 class="title is-5">🎯 Adaptive Tool Selection</h3>
+          <p>Learns to autonomously adopt beneficial tools, discard irrelevant ones, and modulate usage frequency.</p>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="box">
+          <h3 class="title is-5">🔄 Multi-Turn Planning</h3>
+          <p>Supports complex multi-turn tool interactions with reflection and backtracking capabilities.</p>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="box">
+          <h3 class="title is-5">🌐 Strong Generalization</h3>
+          <p>Generalizes to unseen tools and novel tasks beyond training distribution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- BibTeX -->
 <section class="section" id="BibTeX">
