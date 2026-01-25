@@ -1,0 +1,357 @@
+/* ===============================================
+   AdaReasoner 网页设计增强 - 简洁现代风格
+   基于Logo色系：深蓝绿 + 青色 + 黄绿色
+   Design Enhancement - Minimalist & Memorable
+   =============================================== */
+
+/* ============ 色彩系统（提取自Logo） ============ */
+:root {
+  --primary-teal: #1E7A8C;        /* Logo主色-深蓝绿 */
+  --primary-cyan: #00BCD4;        /* Logo亮青色 */
+  --accent-green: #7CB342;        /* Logo黄绿色 */
+  --dark-gray: #2C3E50;           /* 深灰 */
+  --light-bg: #F8FAFB;            /* 极浅青色背景 */
+  --white: #FFFFFF;
+  --shadow-soft: 0 4px 12px rgba(30, 122, 140, 0.08);
+  --shadow-hover: 0 8px 24px rgba(30, 122, 140, 0.15);
+}
+
+/* ============ 1. 统一白色背景 ============ */
+body {
+  background-color: var(--white);
+}
+
+/* 所有section统一白色背景 */
+section.hero,
+section.hero.teaser,
+section {
+  background-color: var(--white) !important;
+}
+
+/* ============ 2. 关键数字渐变色强调 ============ */
+.gradient-accent {
+  background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* 自动应用到加粗的百分比和关键词 */
+strong {
+  color: var(--primary-teal) !important;
+  font-weight: 700 !important;
+}
+
+.content p strong:contains('+'),
+.content p strong:contains('%'),
+.content p strong:contains('AdaReasoner'),
+.content p strong:contains('GPT') {
+  background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============ 3. 图片展示优化 ============ */
+.image img,
+.single-image-display-wrapper img,
+.static-display-image,
+.hero.teaser img {
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image img:hover,
+.static-display-image:hover {
+  /* 取消浮动效果 */
+  box-shadow: var(--shadow-hover);
+  cursor: pointer;
+}
+
+/* ============ 4. 按钮组优化（Logo色系） ============ */
+.publication-links .button {
+  background-color: var(--dark-gray) !important;
+  border: 2px solid transparent !important;
+  transition: all 0.3s ease !important;
+  font-weight: 500 !important;
+}
+
+.publication-links .button:hover {
+  background-color: var(--primary-teal) !important;
+  border-color: var(--primary-teal) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 122, 140, 0.25);
+}
+
+/* GitHub按钮特殊样式 */
+.publication-links .button:has(.fa-github):hover {
+  background-color: var(--primary-cyan) !important;
+}
+
+/* ============ 5. Key Features 卡片增强 ============ */
+.key-features .box,
+section:has(.title:contains('Key Features')) .box {
+  border-left: 4px solid var(--primary-teal);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--white);
+}
+
+.key-features .box:hover,
+section:has(.title:contains('Key Features')) .box:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-left-color: var(--primary-cyan);
+}
+
+/* 不同卡片不同色彩 */
+.key-features .column:nth-child(1) .box {
+  border-left-color: var(--primary-teal);
+}
+
+.key-features .column:nth-child(2) .box {
+  border-left-color: var(--primary-cyan);
+}
+
+.key-features .column:nth-child(3) .box {
+  border-left-color: var(--accent-green);
+}
+
+/* ============ 6. 标题优化 ============ */
+.title.is-3,
+h2.title {
+  color: var(--dark-gray) !important;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* 标题下方装饰线 */
+.title.is-3::after,
+h2.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-teal), var(--primary-cyan));
+  border-radius: 2px;
+}
+
+/* ============ 7. Hero区域优化 ============ */
+.hero.teaser {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Teaser背景微妙渐变 */
+.hero.teaser::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(30, 122, 140, 0.02) 0%, 
+    rgba(0, 188, 212, 0.03) 100%);
+  pointer-events: none;
+}
+
+/* ============ 8. 表格优化 ============ */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.table thead {
+  background: linear-gradient(135deg, var(--primary-teal), var(--primary-cyan));
+}
+
+.table thead th {
+  color: white !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(30, 122, 140, 0.05);
+}
+
+/* ============ 9. 视频容器优化 ============ */
+.responsive-video-wrapper,
+#video-section iframe {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ============ 10. BibTeX区域优化 ============ */
+#BibTeX .content {
+  position: relative;
+}
+
+#BibTeX pre {
+  background-color: var(--light-bg) !important;
+  border: 1px solid rgba(30, 122, 140, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+/* 添加复制按钮 */
+#BibTeX pre::before {
+  content: 'Copy';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary-teal);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+#BibTeX pre:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ============ 11. 页面加载动画（简洁） ============ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 依次延迟 */
+section:nth-child(1) { animation-delay: 0s; }
+section:nth-child(2) { animation-delay: 0.1s; }
+section:nth-child(3) { animation-delay: 0.2s; }
+section:nth-child(4) { animation-delay: 0.3s; }
+
+/* ============ 12. 滚动优化 ============ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============ 13. Logo动效（微妙） ============ */
+.hero img[alt*="Logo"] {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero img[alt*="Logo"]:hover {
+  transform: scale(1.05);
+}
+
+/* ============ 14. 链接颜色统一 ============ */
+a {
+  color: var(--primary-teal);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-cyan);
+}
+
+.publication-authors a {
+  color: #2097A7 !important;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.publication-authors a:hover {
+  border-bottom-color: var(--primary-cyan);
+}
+
+/* ============ 15. Footer优化 ============ */
+.footer {
+  background-color: var(--light-bg);
+  border-top: 1px solid rgba(30, 122, 140, 0.1);
+}
+
+/* ============ 16. 移动端优化 ============ */
+@media (max-width: 768px) {
+  .title.is-3::after,
+  h2.title::after {
+    width: 80px;
+    height: 2px;
+  }
+  
+  .publication-links .button {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ============ 17. 打印样式 ============ */
+@media print {
+  .navbar,
+  .publication-links,
+  .footer {
+    display: none;
+  }
+  
+  section {
+    page-break-inside: avoid;
+  }
+}
+
+/* ============ 18. 焦点状态优化（可访问性） ============ */
+button:focus,
+a:focus {
+  outline: 2px solid var(--primary-cyan);
+  outline-offset: 2px;
+}
+
+/* ============ 19. 选中文本颜色 ============ */
+::selection {
+  background-color: rgba(30, 122, 140, 0.2);
+  color: var(--dark-gray);
+}
+
+::-moz-selection {
+  background-color: rgba(30, 122, 140, 0.2);
+  color: var(--dark-gray);
+}
+
+/* ============ 20. 加载状态 ============ */
+img {
+  background: linear-gradient(90deg, 
+    var(--light-bg) 0%, 
+    rgba(30, 122, 140, 0.05) 50%, 
+    var(--light-bg) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+img[src] {
+  animation: none;
+  background: none;
+}

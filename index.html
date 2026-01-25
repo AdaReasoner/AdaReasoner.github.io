@@ -25,6 +25,9 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/font-optimization.css">
+  <link rel="stylesheet" href="./static/css/design-enhancement.css">
+  <link rel="stylesheet" href="./static/css/layout-optimization.css">
 
   <!-- 【替换点1】修改 favicon -->
   <link rel="icon" href="./static/images/small_logo.png">
@@ -53,7 +56,7 @@
         </span>
       </a>
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" style="font-size: 1rem;">
           More Research
         </a>
         <div class="navbar-dropdown">
@@ -79,15 +82,15 @@
 
 <section class="hero">
   <div class="hero-body">
-    <div class="container is-max-desktop">
+    <div class="container is-widest">
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <!-- 【替换点2】论文标题Logo -->
-          <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
             <img src="./static/images/logo.png" alt="AdaReasoner Logo" style="height: 7em; margin-right: 0.5em;">
 <!--            <h1 class="title is-1 publication-title" style="margin: 0;">daReasoner</h1>-->
           </div>
-          <h2 class="subtitle is-3 publication-subtitle"><strong>Dynamic Tool Orchestration for Iterative Visual Reasoning</strong></h2>
+          <h1 class="publication-main-title">Dynamic Tool Orchestration for Iterative Visual Reasoning</h1>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -95,15 +98,15 @@
             <span class="author-block">
               <a href="#">Haoyu Sun</a><sup>*,2</sup>,</span>
             <span class="author-block">
-              <a href="#">Jiawei Gu</a><sup>*,3</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=7p8yEHAAAAAJ&hl=En">Jiawei Gu</a><sup>*,3</sup>,</span>
             <span class="author-block">
-              <a href="#">Linjie Li</a><sup>*,4</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=WR875gYAAAAJ&hl=en">Linjie Li</a><sup>*,4</sup>,</span>
             <span class="author-block">
               <a href="#">Luxin Xu</a><sup>5</sup>,</span>
             <span class="author-block">
-              <a href="#">Ranjay Krishna</a><sup>4</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=IcqahyAAAAAJ&hl=en">Ranjay Krishna</a><sup>4</sup>,</span>
             <span class="author-block">
-              <a href="#">Yu Cheng</a><sup>6</sup></span>
+              <a href="https://ych133.github.io/">Yu Cheng</a><sup>6</sup></span>
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -174,27 +177,25 @@
   </div>
 </section>
 
-<!-- 【替换点3】Teaser Figure -->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-
-      <figure class="image is-fullwidth">
-        <img src="./static/images/teaser.jpg" alt="AdaReasoner Overview">
-
-      </figure>
-      <h2 class="subtitle has-text-centered">
-        <strong>AdaReasoner</strong> performs adaptive and generalized tool-using.
-      </h2>
+<!-- 【替换点6】Method Overview -->
+<section class="section">
+  <div class="container is-widest">
+    <div class="method-overview-content">
+      <div class="image is-fullwidth image-wide" style="max-width: 90%; margin: 0 auto;">
+        <img src="./static/images/main_fig_new.png" alt="Method Overview" class="static-display-image">
+      </div>
     </div>
+    <p style="text-align: center; margin-top: 1.5rem; font-size: 1.25rem; color: #363636;">
+      An overview of our AdaReasoner framework.
+    </p>
   </div>
 </section>
 
 <!-- Video Section -->
 <section class="section" id="video-section">
-  <div class="container is-max-desktop">
+  <div class="container is-wider">
     <h2 class="title is-3 has-text-centered">Video Demo</h2>
-    <div class="responsive-video-wrapper">
+    <div class="responsive-video-wrapper video-wide">
       <!-- 【替换点4】视频链接 -->
 <!--      <iframe width="1000" height="600" src="https://www.youtube.com/embed/h53kWZCOfSs?si=5mkDu8yXGQRDfGil" title="YouTube video player"-->
 <!--              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
@@ -210,34 +211,68 @@
 
 <!-- Abstract -->
 <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Many visual reasoning problems require acting through tools, measuring, trans-
-            forming, or simulating intermediate states rather than solving everything in a sin-
-            gle forward pass. Effective reasoning, therefore, hinges on knowing which tools
-            to use, when to invoke them, and how to compose them over multiple steps, even
-            when faced with new tools or new tasks. We introduce  <strong>AdaReasoner</strong>, a fam-
-            ily of multimodal models that learn tool use as a general reasoning skill rather
-            than as tool-specific or explicitly supervised behavior. AdaReasoner is enabled by
-            (i) a scalable data curation pipeline exposing models to long-horizon, multi-step
-            tool interactions; (ii) Tool-GRPO, a reinforcement learning algorithm that opti-
-            mizes tool selection and sequencing based on end-task success; and (iii) an adap-
-            tive learning mechanism that dynamically regulates tool usage. Together, these
-            components allow models to infer tool utility from task context and intermediate
-            outcomes, enabling coordination of multiple tools and generalization to unseen
-            tools. Empirically, AdaReasoner exhibits strong tool-adaptive and generalization
-            behaviors: it autonomously adopts beneficial tools, suppresses irrelevant ones, and
-            adjusts tool usage frequency based on task demands, despite never being explic-
-            itly trained to do so. These capabilities translate into state-of-the-art performance
-            across challenging benchmarks, improving the 7B base model by <strong>+24.9%</strong> on av-
-            erage and surpassing strong proprietary systems such as GPT-5 on multiple tasks,
-            including VSP and Jigsaw.
+  <div class="container is-widest">
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Many visual reasoning problems require acting through tools, measuring, transforming, or simulating intermediate states rather than solving everything in a single forward pass. Effective reasoning, therefore, hinges on knowing which tools to use, when to invoke them, and how to compose them over multiple steps, even when faced with new tools or new tasks. We introduce <strong>AdaReasoner</strong>, a family of multimodal models that learn tool use as a general reasoning skill rather than as tool-specific or explicitly supervised behavior.
+      </p>
+    </div>
 
-          </p>
+    <!-- Teaser Figure - 插入在 Abstract 中间 -->
+    <div style="max-width: 900px; margin: 2rem auto;">
+      <figure class="image is-fullwidth">
+        <img src="./static/images/teaser.jpg" alt="AdaReasoner Overview">
+      </figure>
+      <p class="has-text-centered" style="margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.6;">
+        AdaReasoner performs adaptive and generalized tool-using.
+      </p>
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        AdaReasoner is enabled by (i) a scalable data curation pipeline exposing models to long-horizon, multi-step tool interactions; (ii) Tool-GRPO, a reinforcement learning algorithm that optimizes tool selection and sequencing based on end-task success; and (iii) an adaptive learning mechanism that dynamically regulates tool usage. Together, these components allow models to infer tool utility from task context and intermediate outcomes, enabling coordination of multiple tools and generalization to unseen tools. Empirically, AdaReasoner exhibits strong tool-adaptive and generalization behaviors: it autonomously adopts beneficial tools, suppresses irrelevant ones, and adjusts tool usage frequency based on task demands, despite never being explicitly trained to do so. These capabilities translate into state-of-the-art performance across challenging benchmarks, improving the 7B base model by <strong>+24.9%</strong> on average and surpassing strong proprietary systems such as GPT-5 on multiple tasks, including VSP and Jigsaw.
+      </p>
+    </div>
+    
+    <!-- Inline Key Features -->
+    <div class="inline-features-container">
+      <div class="inline-features-grid">
+        <div class="inline-feature-card">
+          <div class="feature-icon-svg">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" fill="#00BCD4" opacity="0.2"/>
+              <path d="M24 8L28 16L36 18L30 24L32 32L24 28L16 32L18 24L12 18L20 16L24 8Z" fill="#00BCD4"/>
+              <circle cx="24" cy="24" r="4" fill="#1E7A8C"/>
+            </svg>
+          </div>
+          <h4 class="feature-title">Adaptive Tool Selection</h4>
+          <p class="feature-desc">Autonomously adopts beneficial tools and suppresses irrelevant ones</p>
+        </div>
+        
+        <div class="inline-feature-card">
+          <div class="feature-icon-svg">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" fill="#00BCD4" opacity="0.2"/>
+              <path d="M24 12V24L32 28" stroke="#00BCD4" stroke-width="3" stroke-linecap="round"/>
+              <path d="M24 36C30.6274 36 36 30.6274 36 24C36 17.3726 30.6274 12 24 12C17.3726 12 12 17.3726 12 24" stroke="#1E7A8C" stroke-width="3" stroke-linecap="round"/>
+              <path d="M16 28L12 24L16 20" stroke="#1E7A8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4 class="feature-title">Multi-Turn Planning</h4>
+          <p class="feature-desc">Complex multi-turn tool interactions with reflection capabilities</p>
+        </div>
+        
+        <div class="inline-feature-card">
+          <div class="feature-icon-svg">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" fill="#00BCD4" opacity="0.2"/>
+              <path d="M24 12L28 20L36 22L30 28L32 36L24 32L16 36L18 28L12 22L20 20L24 12Z" fill="#00BCD4"/>
+              <path d="M24 16L26 22L32 23L28 27L29 33L24 30L19 33L20 27L16 23L22 22L24 16Z" fill="#1E7A8C"/>
+            </svg>
+          </div>
+          <h4 class="feature-title">Strong Generalization</h4>
+          <p class="feature-desc">Generalizes to unseen tools and novel tasks beyond training</p>
         </div>
       </div>
     </div>
@@ -246,146 +281,116 @@
 
 
 
-<!-- 【替换点6】Method Overview -->
+<!-- 【替换点5】Results Figure -->
 <section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Method Overview</h2>
-    <div class="image is-fullwidth">
-      <img src="./static/images/main_fig_new.jpg" alt="Method Overview" class="static-display-image">
-    </div>
-    <div class="content has-text-justified">
-      <p>
-        An overview of our AdaReasoner framework. The pipeline consists of two main stages: (a) the Tool
-        Cold Start (TC) phase, where trajectories are carefully constructed to support multi-turn reasoning; and (b) the
-        Tool GRPO (TG) phase, where the policy is further refined via reinforcement learning guided by our adaptive,
-        multi-turn reward. In addition, the Adaptive Learning method (c) can be applied throughout both the TC and
-        TG stages, enabling improved generalization across tasks and tool configurations.
+  <div class="container is-widest">
+    <h2 class="title is-3 has-text-centered">Main Results</h2>
+    <div class="method-overview-content">
+      <div class="image is-fullwidth image-wide">
+        <img src="./static/images/main_res.png" alt="Main Results" class="static-display-image">
+      </div>
+      <p class="has-text-centered">
+        AdaReasoner achieves substantial gains across diverse benchmarks, outperforming both base models
+        and strong proprietary systems like GPT-5 and Claude Sonnet 4.
       </p>
     </div>
   </div>
 </section>
 
-<!-- 【替换点5】Results Figure -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Main Results</h2>
-    <div class="image is-fullwidth">
-      <img src="./static/images/main_res.png" alt="Main Results" class="static-display-image">
-    </div>
-    <p class="has-text-centered">
-      AdaReasoner achieves substantial gains across diverse benchmarks, outperforming both base models
-      and strong proprietary systems like GPT-5 and Claude Sonnet 4.
-    </p>
-  </div>
-</section>
-
 <!-- 【替换点7】Qualitative Examples -->
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-widest">
     <h2 class="title is-3 has-text-centered">Qualitative Examples</h2>
-    <div class="single-image-display-wrapper">
-      <img src="./static/images/examples.png" alt="Qualitative Examples" class="static-display-image">
+    <div class="method-overview-content">
+      <div class="single-image-display-wrapper image-wide">
+        <img src="./static/images/examples.png" alt="Qualitative Examples" class="static-display-image">
+      </div>
+      <p class="has-text-centered">
+        AdaReasoner-7B demonstrates advanced capabilities for multi-turn, tool-assisted reasoning and reflection.
+      </p>
     </div>
-    <p class="has-text-centered">
-      AdaReasoner-7B demonstrates advanced capabilities for multi-turn, tool-assisted reasoning and reflection.
-    </p>
   </div>
 </section>
 
 <!-- Available Tools -->
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-wider">
     <h2 class="title is-3 has-text-centered">Vision Toolset</h2>
-    <div class="content">
-      <table class="table is-striped is-fullwidth">
-        <thead>
-        <tr>
-          <th>Tool</th>
-          <th>Description</th>
-          <th>Type</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><strong>Point</strong></td>
-          <td>Precise object localization</td>
-          <td>Online</td>
-        </tr>
-        <tr>
-          <td><strong>DRAW2DPATH</strong></td>
-          <td>Visualization and verification</td>
-          <td>Offline</td>
-        </tr>
-        <tr>
-          <td><strong>ASTAR</strong></td>
-          <td>Shortest path planning</td>
-          <td>Offline</td>
-        </tr>
-        <tr>
-          <td><strong>OCR</strong></td>
-          <td>Text recognition</td>
-          <td>Online</td>
-        </tr>
-        <tr>
-          <td><strong>CROP</strong></td>
-          <td>Region extraction</td>
-          <td>Offline</td>
-        </tr>
-        <tr>
-          <td><strong>DETECTBLACKAREA</strong></td>
-          <td>Missing region detection</td>
-          <td>Offline</td>
-        </tr>
-        <tr>
-          <td><strong>INSERTIMAGE</strong></td>
-          <td>Hypothesis testing</td>
-          <td>Offline</td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="tools-grid">
+      <div class="tool-card online">
+        <div class="tool-header">
+          <h3 class="tool-name">Point</h3>
+          <span class="tool-badge online-badge">Online</span>
+        </div>
+        <p class="tool-description">Precise object localization</p>
+      </div>
+      
+      <div class="tool-card offline">
+        <div class="tool-header">
+          <h3 class="tool-name">DRAW2DPATH</h3>
+          <span class="tool-badge offline-badge">Offline</span>
+        </div>
+        <p class="tool-description">Visualization and verification</p>
+      </div>
+      
+      <div class="tool-card offline">
+        <div class="tool-header">
+          <h3 class="tool-name">ASTAR</h3>
+          <span class="tool-badge offline-badge">Offline</span>
+        </div>
+        <p class="tool-description">Shortest path planning</p>
+      </div>
+      
+      <div class="tool-card online">
+        <div class="tool-header">
+          <h3 class="tool-name">OCR</h3>
+          <span class="tool-badge online-badge">Online</span>
+        </div>
+        <p class="tool-description">Text recognition</p>
+      </div>
+      
+      <div class="tool-card offline">
+        <div class="tool-header">
+          <h3 class="tool-name">CROP</h3>
+          <span class="tool-badge offline-badge">Offline</span>
+        </div>
+        <p class="tool-description">Region extraction</p>
+      </div>
+      
+      <div class="tool-card offline">
+        <div class="tool-header">
+          <h3 class="tool-name">DETECTBLACKAREA</h3>
+          <span class="tool-badge offline-badge">Offline</span>
+        </div>
+        <p class="tool-description">Missing region detection</p>
+      </div>
+      
+      <div class="tool-card offline">
+        <div class="tool-header">
+          <h3 class="tool-name">INSERTIMAGE</h3>
+          <span class="tool-badge offline-badge">Offline</span>
+        </div>
+        <p class="tool-description">Hypothesis testing</p>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- Key Features -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Key Features</h2>
-    <div class="columns is-multiline">
-      <div class="column is-4">
-        <div class="box">
-          <h3 class="title is-5">🎯 Adaptive Tool Selection</h3>
-          <p>Learns to autonomously adopt beneficial tools, discard irrelevant ones, and modulate usage frequency.</p>
-        </div>
-      </div>
-      <div class="column is-4">
-        <div class="box">
-          <h3 class="title is-5">🔄 Multi-Turn Planning</h3>
-          <p>Supports complex multi-turn tool interactions with reflection and backtracking capabilities.</p>
-        </div>
-      </div>
-      <div class="column is-4">
-        <div class="box">
-          <h3 class="title is-5">🌐 Strong Generalization</h3>
-          <p>Generalizes to unseen tools and novel tasks beyond training distribution.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- BibTeX -->
 <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{adareasoner2025,
+  <div class="container is-widest">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <pre style="display: inline-block; text-align: left; margin: 0 auto;"><code>@article{adareasoner2025,
   title={AdaReasoner: Dynamic Tool Orchestration for Iterative Visual Reasoning},
   author={Song, Mingyang and Sun, Haoyu and Gu, Jiawei and Li, Linjie and Krishna, Ranjay and Cheng, Yu},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
   year={2025}
 }</code></pre>
+    </div>
   </div>
 </section>
 

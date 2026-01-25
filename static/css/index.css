@@ -1,5 +1,38 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* 优化所有标题字体 */
+h1, h2, h3, h4, h5, h6,
+.title {
+  font-family: 'Google Sans', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* 大标题 */
+.title.is-1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* 二级标题 - 章节标题 */
+.title.is-3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* 三级标题 - 卡片标题等 */
+.title.is-5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
 
@@ -49,10 +82,71 @@ body {
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+/* 优化副标题 */
+.publication-subtitle {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
 }
 
 .publication-authors {
     font-family: 'Google Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+/* 优化Abstract和其他内容段落 */
+.content.has-text-justified {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+.content.has-text-justified p {
+    margin-bottom: 1.25em;
+}
+
+/* 优化表格样式 */
+.table {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.table th {
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.0625rem;
+}
+
+.table td {
+    font-size: 1rem;
+    padding: 0.875em 0.75em;
+}
+
+/* 优化卡片内的段落 */
+.box p {
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+/* 优化图片说明文字 */
+.has-text-centered {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 优化teaser标题 */
+.teaser .subtitle {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-weight: 500;
 }
 
 .publication-venue {
@@ -154,4 +248,116 @@ body {
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+/* ===============================================
+   全面字体优化 - Comprehensive Font Optimization
+   =============================================== */
+
+/* 1. 统一所有标题使用 Google Sans 字体 */
+.title,
+h1, h2, h3, h4, h5, h6,
+.subtitle {
+  font-family: 'Google Sans', sans-serif !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* 2. 主副标题 - 论文标题下的说明 */
+.publication-subtitle,
+.subtitle.is-3 {
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  margin-top: 1rem !important;
+}
+
+/* 3. 作者信息 */
+.publication-authors {
+  font-size: 1.25rem !important;
+  line-height: 2 !important;
+  margin-top: 1.5rem !important;
+}
+
+.publication-authors a {
+  font-weight: 500 !important;
+}
+
+/* 4. 机构信息 */
+.publication-authors + .publication-authors {
+  font-size: 1.1rem !important;
+  line-height: 1.8 !important;
+  margin-top: 1rem !important;
+  color: #5a5a5a !important;
+}
+
+/* 5. 二级标题 - 章节标题 (Abstract, Video Demo, etc.) */
+h2.title,
+.title.is-3,
+section > .container > h2 {
+  font-size: 2.25rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+  margin-top: 3rem !important;
+}
+
+/* 6. 三级标题 - 卡片标题 (Key Features cards) */
+h3.title,
+.title.is-5,
+.box h3 {
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+/* 7. Abstract 和描述文本 - 已移至 font-optimization.css */
+/* .content.has-text-justified p,
+.content p {
+  font-size: 1.125rem !important;
+  line-height: 1.85 !important;
+} */
+
+/* 8. 图片说明文字 */
+p.has-text-centered,
+.has-text-centered p {
+  font-size: 1.0625rem !important;
+  line-height: 1.7 !important;
+  margin-top: 1rem !important;
+  color: #4a4a4a !important;
+}
+
+/* 9. 表格优化 */
+.table {
+  font-size: 1.0625rem !important;
+}
+
+.table th {
+  font-family: 'Google Sans', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.125rem !important;
+  padding: 1rem 0.75rem !important;
+}
+
+.table td {
+  font-size: 1.0625rem !important;
+  padding: 1rem 0.75rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 10. 卡片内容 */
+.box p {
+  font-size: 1.0625rem !important;
+  line-height: 1.75 !important;
+}
+
+/* 11. Teaser 标题 */
+.teaser .subtitle {
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+}
+
+/* 12. 按钮文字 */
+.button {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
 }
