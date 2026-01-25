@@ -157,7 +157,7 @@ h2.title.is-3 {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  padding-bottom: 42%;  /* 减少高度比例 */
+  padding-bottom: 60%;  /* 减少高度比例 */
   height: 0;
   overflow: hidden;
 }
