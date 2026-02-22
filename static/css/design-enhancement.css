@@ -262,11 +262,8 @@ html {
 
 /* ============ 13. Logo动效（微妙） ============ */
 .hero img[alt*="Logo"] {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hero img[alt*="Logo"]:hover {
-  transform: scale(1.05);
+  transition: none;
+  transform: none;
 }
 
 /* ============ 14. 链接颜色统一 ============ */
